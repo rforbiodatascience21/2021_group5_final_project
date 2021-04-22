@@ -16,7 +16,7 @@ gordon_y <- read_tsv(file = "data/01_gordon_y.tsv.gz")
 
 
 # Wrangle data ------------------------------------------------------------
-gordon_clean <- bind_cols(gordon_x, gordon_y)
+gordon_clean <- mutate(gordon_x, gordon_y)
 
 
 # Write data --------------------------------------------------------------
