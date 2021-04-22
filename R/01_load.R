@@ -11,13 +11,19 @@ source(file = "R/99_project_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-my_data_raw <- read_tsv(file = "data/_raw/my_raw_data.tsv")
-
+load(file = "data/_raw/gordon.RData")
 
 # Wrangle data ------------------------------------------------------------
-my_data <- my_data_raw # %>% ...
+gordon_x <- gordon %>% 
+  pluck("x") %>% 
+  as_tibble
 
+gordon_y <- gordon %>% 
+  pluck("y") %>% 
+  as_tibble
 
 # Write data --------------------------------------------------------------
-write_tsv(x = my_data,
-          file = "data/01_my_data.tsv")
+write_tsv(x = gordon_x,
+          file = "data/01_gordon_x.tsv.gz")
+write_tsv(x = gordon_y, 
+          file = "data/01_gordon_y.tsv.gz")
