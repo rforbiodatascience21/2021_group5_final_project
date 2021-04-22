@@ -11,13 +11,14 @@ source(file = "R/99_project_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-my_data <- read_tsv(file = "data/01_my_data.tsv")
+gordon_x <- read_tsv(file = "data/01_gordon_x.tsv.gz")
+gordon_y <- read_tsv(file = "data/01_gordon_y.tsv.gz")
 
 
 # Wrangle data ------------------------------------------------------------
-my_data_clean <- my_data # %>% ...
+gordon_clean <- bind_cols(gordon_x, gordon_y)
 
 
 # Write data --------------------------------------------------------------
-write_tsv(x = my_data_clean,
-          file = "data/02_my_data_clean.tsv")
+write_tsv(x = gordon_clean,
+          file = "data/02_gordon_clean.tsv.gz")

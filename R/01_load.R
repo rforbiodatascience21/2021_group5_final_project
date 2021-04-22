@@ -13,6 +13,7 @@ source(file = "R/99_project_functions.R")
 # Load data ---------------------------------------------------------------
 load(file = "data/_raw/gordon.RData")
 
+
 # Wrangle data ------------------------------------------------------------
 gordon_x <- gordon %>% 
   pluck("x") %>% 
@@ -21,6 +22,7 @@ gordon_x <- gordon %>%
 gordon_y <- gordon %>% 
   pluck("y") %>% 
   as_tibble
+
 
 # Write data --------------------------------------------------------------
 write_tsv(x = gordon_x,
