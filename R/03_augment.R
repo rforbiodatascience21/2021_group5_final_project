@@ -11,13 +11,17 @@ source(file = "R/99_project_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-my_data_clean <- read_tsv(file = "data/02_my_data_clean.tsv")
+gordon_clean <- read_tsv(file = "data/02_gordon_clean.tsv.gz")
 
 
 # Wrangle data ------------------------------------------------------------
-my_data_clean_aug <- my_data_clean # %>% ...
+gordon_clean_aug <- gordon_clean %>%
+  mutate(outcome = case_when(value == "mesothelioma" ~ 0,
+                             value == "adenocarcinoma" ~ 1)) %>% 
+  relocate(c(value, outcome)) %>% 
+  rename(response = value)
 
 
 # Write data --------------------------------------------------------------
-write_tsv(x = my_data_clean_aug,
-          file = "data/03_my_data_clean_aug.tsv")
+write_tsv(x = gordon_clean_aug,
+          file = "data/03_gordon_clean_aug.tsv.gz")
