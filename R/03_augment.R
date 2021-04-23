@@ -21,7 +21,18 @@ gordon_clean_aug <- gordon_clean %>%
   relocate(c(value, outcome)) %>% 
   rename(response = value)
 
+set.seed(1234)
+
+gordon_100 <- gordon_clean_aug %>%
+  pivot_longer(cols = -outcome, names_to = "probe", values_to = "value") %>%
+  group_by(probe) %>%
+  nest() %>%
+  ungroup() %>%
+  sample_n(100)
+
 
 # Write data --------------------------------------------------------------
 write_tsv(x = gordon_clean_aug,
           file = "data/03_gordon_clean_aug.tsv.gz")
+write_tsv(x = gordon_100 ,
+          file = "data/03_gordon_100.tsv.gz")
