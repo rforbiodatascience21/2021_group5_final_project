@@ -11,7 +11,7 @@ source(file = "R/99_project_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-my_data_clean_aug <- read_tsv(file = "data/03_gordon_clean_aug.tsv.gz")
+my_data_clean_aug <- readRDS(file = "data/gordon_100.rds")
 
 
 # Wrangle data ------------------------------------------------------------
