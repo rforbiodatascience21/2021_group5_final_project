@@ -34,8 +34,8 @@ my_data_clean_aug <- my_data_clean_aug %>%
 my_data_clean_aug <- mutate(identified_as = case_when( p.value < 0.05 ~ "Significant",
                                                        TRUE ~ "Non-significant"))
 
-# Wide Dataset ---------------------------------------------------------------
-# Selecting the same 100 genes as previous 
+# PCA analysis ---------------------------------------------------------------
+## Selecting the same 100 genes as previous 
 my_data_wide <- gordon_clean_aug %>% select(outcome, pull(gordon_100, probe))
 
 #my_data_wide <- my_data_wide %>% 
