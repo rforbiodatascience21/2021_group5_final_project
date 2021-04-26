@@ -22,10 +22,18 @@ gordon_clean_aug <- gordon_clean %>%
   rename(response = value)
 
 # Subset data -------------------------------------------------------------
-set.seed(1234)
-gordon_100 <- gordon_clean_aug %>% 
-  sample_n(100)
+gordon_long_nested <- gordon_clean_aug %>%
+  select(-response) %>% #can't combine <chr> and <dbl>
+  pivot_longer(cols = -outcome, 
+               names_to = "probe", 
+               values_to = "value") %>%
+  group_by(probe) %>%
+  nest() %>%
+  ungroup() #why do we ungroup? there is no difference in the data setup, from just nest()
 
+set.seed(1234)
+gordon_100 <- gordon_long_nested %>% 
+  sample_n(100)
 
 # Write data --------------------------------------------------------------
 write_tsv(x = gordon_clean_aug,

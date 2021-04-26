@@ -11,18 +11,10 @@ source(file = "R/99_project_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-gordon_clean_aug <- readRDS(file = "data/03_gordon_100.rds")
+gordon_long_nested <- readRDS(file = "data/03_gordon_100.rds")
 
 
 # Wrangle data ------------------------------------------------------------
-gordon_long_nested <- gordon_clean_aug %>%
-  select(-response) %>% #can't combine <chr> and <dbl>
-  pivot_longer(cols = -outcome, 
-               names_to = "probe", 
-               values_to = "value") %>%
-  group_by(probe) %>%
-  nest() %>%
-  ungroup() #why do we ungroup? there is no difference in the data setup, from just nest()
 
 
 # Model data ------------------------------------------------------------

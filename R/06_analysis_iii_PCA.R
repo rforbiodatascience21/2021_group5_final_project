@@ -12,15 +12,15 @@ source(file = "R/99_project_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-gordon_clean_aug <- readRDS(file = "data/03_gordon_100.rds")
+gordon_clean_aug <- read_tsv(file = "data/03_gordon_clean_aug.tsv.gz")
+gordon_100 <- readRDS(file = "data/03_gordon_100.rds")
 
 
 # Wrangle data  -------------------------------------------------------------
+## Get the 100 random genes and make outcome a factor variable
 gordon_wide <- gordon_clean_aug %>% 
-  select(outcome, pull(gordon_100, probe))
-
-gordon_data_wide <- gordon_data_wide %>% 
-  mutate(outcome = as_factor(outcome)) #why is this necessary? 
+  select(outcome, pull(gordon_100, probe)) %>% 
+  mutate(outcome = as_factor(outcome)) 
 
 
 # PCA analysis ---------------------------------------------------------------
