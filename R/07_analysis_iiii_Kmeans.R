@@ -11,16 +11,8 @@ source(file = "R/99_project_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-#gordon_clean_aug <- read_tsv(file = "data/03_gordon_clean_aug.tsv.gz")
-#gordon_100 <- readRDS(file = "data/03_gordon_100.rds")
 load(file = "results/06_mdl_pca_fit.RData")
 gordon_wide <- read_tsv(file = "data/06_gordon_wide.tsv.gz")
-
-# Wrangle data ------------------------------------------------------------
-## Get the 100 random genes and make outcome a factor variable
-#gordon_wide <- gordon_clean_aug %>% 
- # select(outcome, pull(gordon_100, probe)) %>% 
-  #mutate(outcome = as_factor(outcome)) 
 
 
 # K-means clustering ------------------------------------------------------
