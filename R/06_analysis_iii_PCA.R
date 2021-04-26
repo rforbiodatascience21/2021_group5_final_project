@@ -28,9 +28,6 @@ pca_fit <- gordon_wide %>%
   select(where(is.numeric)) %>% # only numeric columns
   prcomp(scale = TRUE) # PCA on scaled data
 
-## Extract rotation matrix
-pca_fit %>%
-  tidy(matrix = "rotation")
 
 # Visualise data ----------------------------------------------------------
 
@@ -80,6 +77,7 @@ plt3 <- pca_fit %>%
 # Write data --------------------------------------------------------------
 write_tsv(x = gordon_wide,
           file = "data/06_gordon_wide.tsv.gz")
+save(pca_fit, file = "results/06_mdl_pca_fit.RData")
 ggsave(filename = "results/06_plot_PCA_PCcoords.png",
        plot = plt1)
 ggsave(filename = "results/06_plot_PCA_rotation.png",
