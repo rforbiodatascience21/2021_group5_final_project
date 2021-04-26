@@ -11,13 +11,18 @@ source(file = "R/99_project_functions.R")
 
 
 # Load data ---------------------------------------------------------------
-my_data_clean_aug <- readRDS(file = "data/gordon_100.rds")
+gordon_clean_aug <- readRDS(file = "data/03_gordon_100.rds")
 
-# Investigating data  -----------------------------------------------------
 
+# Investigate data ------------------------------------------------------------
 gordon_clean_aug %>% group_by(response) %>% summarise(n = n())
 
+
 # Wrangle data ------------------------------------------------------------
+my_data_clean_aug %>% ...
+
+
+# Model data
 my_data_clean_aug %>% ...
 
 
