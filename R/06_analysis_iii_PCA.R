@@ -24,12 +24,23 @@ gordon_wide <- gordon_clean_aug %>%
 
 
 # PCA analysis ---------------------------------------------------------------
-pca_fit <- gordon_data_wide %>% 
-  select(where(is.numeric)) %>% 
-  prcomp(scale = TRUE)
+pca_fit <- gordon_wide %>% 
+  select(where(is.numeric)) %>% # only numeric columns
+  prcomp(scale = TRUE) # PCA on scaled data
 
+
+# Visualise data ----------------------------------------------------------
+
+## Plot data in PC coordinates
 pca_fit %>%
-  augment(gordon_data_wide) %>% # add original dataset back in
+  augment(gordon_wide) %>% # add original dataset back in
   ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) + 
-  geom_point(size = 1.5) + 
-  theme_minimal() 
+  geom_point(size = 1.5, alpha()) + 
+  theme_minimal() + 
+  
+
+
+
+# Write data --------------------------------------------------------------
+write_tsv(...)
+ggsave(...)
