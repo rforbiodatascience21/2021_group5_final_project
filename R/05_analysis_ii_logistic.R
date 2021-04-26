@@ -15,12 +15,19 @@ gordon_clean_aug <- readRDS(file = "data/03_gordon_100.rds")
 
 
 # Wrangle data ------------------------------------------------------------
-gordon_clean_aug %>% ...
+gordon_long_nested <- gordon_clean_aug %>%
+  select(-response) %>% #can't combine <chr> and <dbl>
+  pivot_longer(cols = -outcome, 
+               names_to = "probe", 
+               values_to = "value") %>%
+  group_by(probe) %>%
+  nest() %>%
+  ungroup() #why do we ungroup? there is no difference in the data setup, from just nest()
 
 
 # Model data ------------------------------------------------------------
 ## Logistic regression model for each of the probes
-gordon_logistic <- gordon_clean_aug %>% 
+gordon_logistic <- gordon_long_nested %>% 
   mutate(mdl = map(data, ~ glm(outcome ~ value, 
                                data = .x,
                                family = binomial(link = "logit"))))

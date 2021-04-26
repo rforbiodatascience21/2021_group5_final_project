@@ -16,7 +16,8 @@ gordon_clean_aug <- readRDS(file = "data/03_gordon_100.rds")
 
 
 # Wrangle data  -------------------------------------------------------------
-gordon_data_wide <- gordon_clean_aug %>% select(outcome, pull(gordon_100, probe))
+gordon_wide <- gordon_clean_aug %>% 
+  select(outcome, pull(gordon_100, probe))
 
 gordon_data_wide <- gordon_data_wide %>% 
   mutate(outcome = as_factor(outcome)) #why is this necessary? 

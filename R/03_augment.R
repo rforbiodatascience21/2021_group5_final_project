@@ -23,14 +23,7 @@ gordon_clean_aug <- gordon_clean %>%
 
 # Subset data -------------------------------------------------------------
 set.seed(1234)
-gordon_100 <- gordon_clean_aug %>%
-  select(-response) %>% #can't combine <chr> and <dbl>
-  pivot_longer(cols = -outcome, 
-               names_to = "probe", 
-               values_to = "value") %>%
-  group_by(probe) %>%
-  nest() %>%
-  ungroup() %>% #why do we ungroup? there is no difference in the data setup, from just nest()
+gordon_100 <- gordon_clean_aug %>% 
   sample_n(100)
 
 
