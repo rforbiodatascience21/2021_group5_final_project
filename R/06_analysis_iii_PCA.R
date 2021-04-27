@@ -19,7 +19,7 @@ gordon_100 <- readRDS(file = "data/03_gordon_100.rds")
 # Wrangle data  -------------------------------------------------------------
 ## Get the 100 random genes and make outcome a factor variable
 gordon_wide <- gordon_clean_aug %>% 
-  select(outcome, pull(gordon_100, probe)) %>% 
+  #select(outcome, pull(gordon_100, probe)) %>% 
   mutate(outcome = as_factor(outcome)) 
 
 

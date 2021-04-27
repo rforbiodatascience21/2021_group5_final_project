@@ -52,10 +52,10 @@ clusterings <-
 plt1 <- ggplot(assignments, aes(x = .fittedPC1, y = .fittedPC2)) +
   geom_point(aes(color = .cluster), alpha = 0.8) + 
   facet_wrap(~ k)
-
+plt1
 ## With centers of clusters - don't work for me yet
 plt2 <- plt1 + geom_point(data = clusters, size = 10, shape = "x")
-
+plt2
 ## Variance within clusters
 ggplot(clusterings, aes(k, tot.withinss)) +
   geom_line() +

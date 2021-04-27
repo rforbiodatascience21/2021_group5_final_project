@@ -15,7 +15,7 @@ gordon_clean_aug <- readRDS(file = "data/03_gordon_100.rds")
 
 
 # Investigate data ------------------------------------------------------------
-gordon_clean_aug %>% group_by(response) %>% summarise(n = n())
+gordon_clean_aug %>% group_by(outcome) %>% summarise(n = n())
 
 
 # Wrangle data ------------------------------------------------------------
