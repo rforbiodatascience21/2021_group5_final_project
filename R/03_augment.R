@@ -38,5 +38,7 @@ gordon_100 <- gordon_long_nested %>%
 # Write data --------------------------------------------------------------
 write_tsv(x = gordon_clean_aug,
           file = "data/03_gordon_clean_aug.tsv.gz")
+saveRDS(object = gordon_long_nested,
+          file = "data/03_gordon_long_nested.rds")
 saveRDS(object  = gordon_100,
           file = "data/03_gordon_100.rds")

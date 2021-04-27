@@ -12,6 +12,8 @@ source(file = "R/99_project_functions.R")
 
 # Load data ---------------------------------------------------------------
 gordon_long_nested <- readRDS(file = "data/03_gordon_100.rds")
+#gordon_long_nested <- readRDS(file = "data/03_gordon_long_nested.rds")
+## too big - R crashes every time. 
 
 
 # Wrangle data ------------------------------------------------------------
