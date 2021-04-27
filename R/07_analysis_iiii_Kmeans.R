@@ -46,6 +46,8 @@ clusterings <-
   kclusts %>%
   unnest(cols = c(glanced))
 
+# Finding the optimal number of clusters 
+tidy(kclusts[[2]][[3]])
 
 # Visualise data ----------------------------------------------------------
 ## Create 6 plots with varying number of clusters k=1..9
@@ -54,12 +56,13 @@ plt1 <- ggplot(assignments, aes(x = .fittedPC1, y = .fittedPC2)) +
   facet_wrap(~ k)
 plt1
 ## With centers of clusters - don't work for me yet
-plt2 <- plt1 + geom_point(data = clusters, size = 10, shape = "x")
+plt2 <- plt1 + geom_point(data = clusters, size = 8, shape = "x")
 plt2
-## Variance within clusters
+## Variance within clusters, scree-plot 
 ggplot(clusterings, aes(k, tot.withinss)) +
   geom_line() +
-  geom_point()
+  geom_point()+ 
+  labs( x = "Number of clusters, k", y = "Total within cluster variation")
 
 # Write data --------------------------------------------------------------
 write_tsv(...)
